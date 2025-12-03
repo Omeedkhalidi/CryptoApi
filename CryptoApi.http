@@ -1,0 +1,4 @@
+POST http://localhost:5092/Encryption/encrypt
+Content-Type: application/json
+
+"ABC"
