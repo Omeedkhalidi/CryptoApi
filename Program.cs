@@ -1,19 +1,16 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Enable controller support (important!)
-builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Show OpenAPI in development mode (optional)
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-// Register all controllers (VERY IMPORTANT)
-app.MapControllers();
+app.MapGet("/encryption", () => "API is running!");
 
 app.Run();
